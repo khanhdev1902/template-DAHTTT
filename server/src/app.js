@@ -1,17 +1,17 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { connectDB } = require("./infrastructure/config/db");
 const sinhVienRoutes = require("./presentation/routes/SinhVienRoute");
 
 const app = express();
-app.use(express.json());
 
-// Routes
+app.use(express.json());
+app.use(cors());
+
 app.use("/sinhvien", sinhVienRoutes);
 
 const PORT = process.env.PORT || 3000;
-
-// Connect DB rồi start server
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

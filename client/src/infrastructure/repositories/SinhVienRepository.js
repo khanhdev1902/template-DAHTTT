@@ -1,7 +1,9 @@
+import http from "./httpClient";
+
 export default class SinhVienRepository {
-  async getSinhVien() {
-    return [
-      { id: 1, maSV: "A46746", ten: "Nguyen Van A", lop: "K35", khoa: "CNTT" },
-    ];
-  }
+  getSinhVien = () => http.get("/sinhvien");
+  getSinhVienById = (id) => http.get(`/sinhvien/${id}`);
+  createSinhVien = (data) => http.post("/sinhvien", data);
+  updateSinhVien = (id, data) => http.put(`/sinhvien/${id}`, data);
+  deleteSinhVien = (id) => http.delete(`/sinhvien/${id}`);
 }

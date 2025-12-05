@@ -4,7 +4,6 @@ class SinhVienUseCase {
   }
 
   async createSinhVien(data) {
-    // Có thể validate hoặc thêm business logic ở đây
     return await this.sinhVienRepository.create(data);
   }
 

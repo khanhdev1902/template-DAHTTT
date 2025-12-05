@@ -5,7 +5,20 @@ export default class SinhVienService {
     this.repository = new SinhVienRepository();
   }
 
-  async laySinhVien() {
-    return await this.repository.getSinhVien();
+  async layTatCaSinhVien() {
+    return (await this.repository.getSinhVien()).data;
+  }
+
+  async laySinhVienTheoID(id) {
+    return (await this.repository.getSinhVienById(id)).data;
+  }
+  async themSinhVien(data) {
+    return (await this.repository.createSinhVien(data)).data;
+  }
+  async capNhatSinhVienTheoID(id, data) {
+    return (await this.repository.updateSinhVien(id, data)).data;
+  }
+  async xoaSinhVienTheoID(id) {
+    return (await this.repository.deleteSinhVien(id)).data;
   }
 }
